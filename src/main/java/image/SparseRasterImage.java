@@ -14,7 +14,6 @@ public class SparseRasterImage extends RasterImage {
     private HashMap<Point, Color> hashMap;
 
     public SparseRasterImage(Color color, int width, int height) {
-        hashMap.clear();
         this.width = width;
         this.height = height;
         this.colors = new Color[width][height];
@@ -28,7 +27,6 @@ public class SparseRasterImage extends RasterImage {
     }
 
     public SparseRasterImage(Color[][] pixels) {
-        hashMap.clear();
         checkArrayValidity(pixels);
         width = pixels.length;
         height = pixels[0].length;
