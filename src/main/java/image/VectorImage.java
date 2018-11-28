@@ -7,8 +7,8 @@ import java.util.List;
 public class VectorImage implements Image {
 
     private List<Shape> shapes;
-    int width;
-    int height;
+    private int width;
+    private int height;
 
     public VectorImage(List<Shape> shapes, int width, int height) {
         this.shapes = shapes;
@@ -28,11 +28,19 @@ public class VectorImage implements Image {
 
     @Override
     public int getWidth() {
-        return 0;
+        return width;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return height;
+    }
+
+    protected void setWidth(int width) {
+        this.width = width;
+    }
+
+    protected void setHeight(int height) {
+        this.height = height;
     }
 }
