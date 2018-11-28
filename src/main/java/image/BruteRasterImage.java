@@ -1,10 +1,9 @@
 package image;
 
+import javafx.scene.paint.Color;
 import util.Matrices;
 
-import java.awt.*;
-
-public class BruteRasterImage {
+public class BruteRasterImage implements Image {
     private Color[][] colors;
 
     public BruteRasterImage(Color color, int width, int height) {
@@ -23,5 +22,18 @@ public class BruteRasterImage {
         this.colors = colors;
     }
 
+    @Override
+    public Color getPixelColor(int x, int y) {
+        return colors[x][y];
+    }
 
+    @Override
+    public int getWidth() {
+        return colors.length;
+    }
+
+    @Override
+    public int getHeight() {
+        return colors[0].length;
+    }
 }
