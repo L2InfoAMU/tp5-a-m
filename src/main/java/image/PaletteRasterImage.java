@@ -45,17 +45,17 @@ public class PaletteRasterImage implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        return null;
+        return palette.get(indexOfColors[x][y]);
     }
 
     @Override
     public int getWidth() {
-        return 0;
+        return width;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return height;
     }
 
     private boolean isColorInPalette(Color color) {
@@ -96,5 +96,10 @@ public class PaletteRasterImage implements Image {
                 pixels[i][j] = new Pixel(i, j, getColorFromPalette((int) indexOfColors[i][j]));
             }
         }
+    }
+
+    public void setPixelColor(Color color, int x, int y) {
+        addColorToPalette(color);
+        indexOfColors[x][y] = (byte) getColorIndexFromPalette(color);
     }
 }
