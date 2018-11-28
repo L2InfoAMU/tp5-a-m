@@ -53,4 +53,9 @@ public class BruteRasterImage implements Image {
         Matrices.requiresRectangularMatrix(pixels);
         pixels[x][y] = new Pixel(x, y, color);
     }
+
+    private void setPixelsColor(Color[][] pixels) {
+        this.colors = pixels;
+        createRepresentation();
+    }
 }
