@@ -8,19 +8,20 @@ import java.util.List;
 
 public class SparseRasterImage extends RasterImage {
 
+    private Color[][] colors;
+
     private List<Point> nonWhitePixels = new ArrayList<>();
-    private HashMap<Point, Color> hashMap = new HashMap<>();
+    private HashMap<Point, Color> hashMap;
 
     public SparseRasterImage(Color color, int width, int height) {
         hashMap.clear();
         this.width = width;
         this.height = height;
+        this.colors = new Color[width][height];
         if (!color.equals(Color.WHITE)) {
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
-                    Point point = new Point(i, j);
-                    nonWhitePixels.add(point);
-                    hashMap.put(point, color);
+                    colors[i][j] = color;
                 }
             }
         }
@@ -31,14 +32,9 @@ public class SparseRasterImage extends RasterImage {
         checkArrayValidity(pixels);
         width = pixels.length;
         height = pixels[0].length;
+        colors = new Color[width][height];
         for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                if (!pixels[i][j].equals(Color.WHITE)) {
-                    Point point = new Point(i, j);
-                    nonWhitePixels.add(point);
-                    hashMap.put(point, pixels[i][j]);
-                }
-            }
+            if (height >= 0) System.arraycopy(pixels[i], 0, colors[i], 0, height);
         }
     }
 
