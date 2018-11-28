@@ -58,4 +58,8 @@ public class BruteRasterImage implements Image {
         this.colors = pixels;
         createRepresentation();
     }
+
+    private void setPixelsColor(Color color) {
+        new BruteRasterImage(color, getWidth(), getHeight());
+    }
 }
