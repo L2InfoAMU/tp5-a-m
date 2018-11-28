@@ -12,19 +12,18 @@ public class SparseRasterImage extends RasterImage {
     private Color[][] colors;
 
     private List<Point> nonWhitePixels = new ArrayList<>();
-    private HashMap<Point, Color> hashMap;
+    private HashMap<Point, Color> hashMap = new HashMap<>();
 
     public SparseRasterImage(Color color, int width, int height) {
         this.width = width;
         this.height = height;
         this.colors = new Color[width][height];
-        if (!color.equals(Color.WHITE)) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    colors[i][j] = color;
-                }
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                colors[i][j] = color;
             }
         }
+        createRepresentation();
     }
 
     public SparseRasterImage(Color[][] pixels) {
@@ -35,6 +34,7 @@ public class SparseRasterImage extends RasterImage {
         for (int i = 0; i < width; i++) {
             if (height >= 0) System.arraycopy(pixels[i], 0, colors[i], 0, height);
         }
+        createRepresentation();
     }
 
     @Override
@@ -63,7 +63,6 @@ public class SparseRasterImage extends RasterImage {
             throw new NoSuchElementException();
         }
         colors[x][y] = color;
-        createRepresentation();
     }
 
     private void setPixelsColor(Color[][] pixels) {
