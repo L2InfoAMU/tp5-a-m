@@ -45,4 +45,17 @@ public class SparseRasterImage extends RasterImage {
         }
         return Color.WHITE;
     }
+
+    public void createRepresentation() {
+        hashMap = new HashMap<>();
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                if (!colors[i][j].equals(Color.WHITE)) {
+                    Point point = new Point(i, j);
+                    nonWhitePixels.add(point);
+                    hashMap.put(point, colors[i][j]);
+                }
+            }
+        }
+    }
 }
