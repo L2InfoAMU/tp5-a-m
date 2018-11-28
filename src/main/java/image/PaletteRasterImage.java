@@ -13,6 +13,8 @@ public class PaletteRasterImage implements Image {
     private int width;
     private int height;
 
+    private Pixel[][] pixels;
+
     public PaletteRasterImage(Color color, int width, int height) {
         this.width = width;
         this.height = height;
@@ -39,6 +41,21 @@ public class PaletteRasterImage implements Image {
                 indexOfColors[i][j] = (byte) getColorIndexFromPalette(pixels[i][j]);
             }
         }
+    }
+
+    @Override
+    public Color getPixelColor(int x, int y) {
+        return null;
+    }
+
+    @Override
+    public int getWidth() {
+        return 0;
+    }
+
+    @Override
+    public int getHeight() {
+        return 0;
     }
 
     private boolean isColorInPalette(Color color) {
@@ -68,18 +85,16 @@ public class PaletteRasterImage implements Image {
         }
     }
 
-    @Override
-    public Color getPixelColor(int x, int y) {
-        return null;
+    private Color getColorFromPalette(int index) {
+        return palette.get(index);
     }
 
-    @Override
-    public int getWidth() {
-        return 0;
-    }
-
-    @Override
-    public int getHeight() {
-        return 0;
+    public void createRepresentation() {
+        pixels = new Pixel[getWidth()][getHeight()];
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                pixels[i][j] = new Pixel(i, j, getColorFromPalette((int) indexOfColors[i][j]));
+            }
+        }
     }
 }
