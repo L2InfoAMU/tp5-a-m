@@ -39,12 +39,10 @@ public class SparseRasterImage extends RasterImage {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        for (Point nonWhitePixel : nonWhitePixels) {
-            if (nonWhitePixel.x == x && nonWhitePixel.y == y) {
-                return hashMap.getOrDefault(nonWhitePixel, Color.WHITE);
-            }
+        if (!checkCoordinatesInArray(x,y)) {
+            throw new NoSuchElementException();
         }
-        return Color.WHITE;
+        return hashMap.getOrDefault(new Point(x, y), Color.WHITE);
     }
 
     public void createRepresentation() {
