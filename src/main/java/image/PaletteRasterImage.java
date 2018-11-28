@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class PaletteRasterImage extends RasterImage {
 
@@ -38,6 +39,9 @@ public class PaletteRasterImage extends RasterImage {
 
     @Override
     public Color getPixelColor(int x, int y) {
+        if (!checkCoordinatesInArray(x,y)) {
+            throw new NoSuchElementException();
+        }
         return palette.get(indexOfColors[x][y]);
     }
 
@@ -82,6 +86,9 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Color color, int x, int y) {
+        if (!checkCoordinatesInArray(x,y)) {
+            throw new NoSuchElementException();
+        }
         addColorToPalette(color);
         indexOfColors[x][y] = (byte) getColorIndexFromPalette(color);
     }

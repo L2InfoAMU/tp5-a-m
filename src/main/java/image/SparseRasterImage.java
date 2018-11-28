@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class SparseRasterImage extends RasterImage {
 
@@ -57,5 +58,13 @@ public class SparseRasterImage extends RasterImage {
                 }
             }
         }
+    }
+
+    public void setPixelColor(Color color, int x, int y) {
+        if (!checkCoordinatesInArray(x,y)) {
+            throw new NoSuchElementException();
+        }
+        colors[x][y] = color;
+        createRepresentation();
     }
 }
