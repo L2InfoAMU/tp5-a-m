@@ -65,4 +65,12 @@ public class SparseRasterImage extends RasterImage {
         colors[x][y] = color;
         createRepresentation();
     }
+
+    private void setPixelsColor(Color[][] pixels) {
+        new SparseRasterImage(pixels);
+    }
+
+    private void setPixelsColor(Color color) {
+        new SparseRasterImage(color, width, height);
+    }
 }
