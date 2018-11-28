@@ -13,4 +13,8 @@ public class BruteRasterImage {
             }
         }
     }
+
+    public BruteRasterImage(Color[][] colors) {
+        this.colors = colors;
+    }
 }
