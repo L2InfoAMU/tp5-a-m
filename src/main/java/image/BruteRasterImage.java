@@ -5,6 +5,7 @@ import util.Matrices;
 
 public class BruteRasterImage implements Image {
     private Color[][] colors;
+    private Pixel[][] pixels;
 
     public BruteRasterImage(Color color, int width, int height) {
         this.colors = new Color[width][height];
@@ -35,5 +36,14 @@ public class BruteRasterImage implements Image {
     @Override
     public int getHeight() {
         return colors[0].length;
+    }
+
+    public void createRepresentation() {
+        pixels = new Pixel[getWidth()][getHeight()];
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                pixels[i][j] = new Pixel(i, j, colors[i][j]);
+            }
+        }
     }
 }
