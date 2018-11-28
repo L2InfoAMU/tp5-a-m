@@ -9,10 +9,6 @@ public class PaletteRasterImage extends RasterImage {
 
     private List<Color> palette = new ArrayList<>();
     private byte[][] indexOfColors;
-    /*private int width;
-    private int height;
-
-    private Pixel[][] pixels;*/
 
     public PaletteRasterImage(Color color, int width, int height) {
         this.width = width;
@@ -44,16 +40,6 @@ public class PaletteRasterImage extends RasterImage {
     public Color getPixelColor(int x, int y) {
         return palette.get(indexOfColors[x][y]);
     }
-
-    /*@Override
-    public int getWidth() {
-        return width;
-    }
-
-    @Override
-    public int getHeight() {
-        return height;
-    }*/
 
     private boolean isColorInPalette(Color color) {
         for (Color aPalette : palette) {
@@ -103,12 +89,4 @@ public class PaletteRasterImage extends RasterImage {
     private void setPixelsColor(Color color) {
         new PaletteRasterImage(color, width, height);
     }
-
-    /*public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }*/
 }

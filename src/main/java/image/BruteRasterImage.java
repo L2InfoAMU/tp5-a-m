@@ -1,7 +1,6 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.Matrices;
 
 public class BruteRasterImage extends RasterImage {
     private Color[][] colors;
