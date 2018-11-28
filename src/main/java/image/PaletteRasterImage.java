@@ -1,6 +1,7 @@
 package image;
 
 import javafx.scene.paint.Color;
+import util.Matrices;
 
 public class PaletteRasterImage implements Image {
 
@@ -17,6 +18,13 @@ public class PaletteRasterImage implements Image {
                 colors[i][j] = color;
             }
         }
+    }
+
+    public PaletteRasterImage(Color[][] colors) {
+        Matrices.requiresNonZeroDimensions(colors);
+        Matrices.requiresNonNull(colors);
+        Matrices.requiresRectangularMatrix(colors);
+        this.colors = colors;
     }
 
     @Override
