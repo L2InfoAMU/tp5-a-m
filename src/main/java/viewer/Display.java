@@ -29,7 +29,7 @@ public class Display implements Initializable {
 
         // Palette Image
         //imageFactory = new RasterUniformImageFactory(200, 200, Color.RED, RasterImageType.PALETTE);
-        //imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.PALETTE);
+        imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.PALETTE);
 
         this.image = imageFactory.makeImage();
 
