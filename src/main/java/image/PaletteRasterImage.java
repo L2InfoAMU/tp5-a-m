@@ -1,19 +1,18 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.Matrices;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage {
 
     private List<Color> palette = new ArrayList<>();
     private byte[][] indexOfColors;
-    private int width;
+    /*private int width;
     private int height;
 
-    private Pixel[][] pixels;
+    private Pixel[][] pixels;*/
 
     public PaletteRasterImage(Color color, int width, int height) {
         this.width = width;
@@ -29,9 +28,7 @@ public class PaletteRasterImage implements Image {
     }
 
     public PaletteRasterImage(Color[][] pixels) {
-        Matrices.requiresNonZeroDimensions(pixels);
-        Matrices.requiresNonNull(pixels);
-        Matrices.requiresRectangularMatrix(pixels);
+        checkArrayValidity(pixels);
         this.width = pixels.length;
         this.height = pixels[0].length;
         this.indexOfColors = new byte[width][height];
@@ -48,7 +45,7 @@ public class PaletteRasterImage implements Image {
         return palette.get(indexOfColors[x][y]);
     }
 
-    @Override
+    /*@Override
     public int getWidth() {
         return width;
     }
@@ -56,7 +53,7 @@ public class PaletteRasterImage implements Image {
     @Override
     public int getHeight() {
         return height;
-    }
+    }*/
 
     private boolean isColorInPalette(Color color) {
         for (Color aPalette : palette) {
@@ -107,11 +104,11 @@ public class PaletteRasterImage implements Image {
         new PaletteRasterImage(color, width, height);
     }
 
-    public void setWidth(int width) {
+    /*public void setWidth(int width) {
         this.width = width;
     }
 
     public void setHeight(int height) {
         this.height = height;
-    }
+    }*/
 }
