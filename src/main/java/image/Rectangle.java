@@ -7,7 +7,7 @@ public class Rectangle implements Shape {
     private int x, y, width, height;
     private Color color;
 
-    public Rectangle(int x, int y, int width, int height, Color color) {
+    Rectangle(int x, int y, int width, int height, Color color) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -17,7 +17,7 @@ public class Rectangle implements Shape {
 
     @Override
     public boolean contains(Point point) {
-        return (point.x >= x && point.x <= x + width) && (point.y >= y && point.y <= y + height);
+        return (point.x >= x && point.x < x + width) && (point.y >= y && point.y < y + height);
     }
 
     @Override
