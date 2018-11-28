@@ -102,4 +102,8 @@ public class PaletteRasterImage implements Image {
         addColorToPalette(color);
         indexOfColors[x][y] = (byte) getColorIndexFromPalette(color);
     }
+
+    private void setPixelsColor(Color color) {
+        new PaletteRasterImage(color, width, height);
+    }
 }
