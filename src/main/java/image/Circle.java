@@ -2,12 +2,22 @@ package image;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Used to store an object representing a circle
+ */
 public class Circle implements Shape {
 
     private int x, y;
     private int radius;
     private Color color;
 
+    /**
+     * Constructor for Circle
+     * @param x : x coordinate of the center
+     * @param y : y coordinate of the center
+     * @param radius : radius of the circle
+     * @param color : corlor of the circle
+     */
     public Circle(int x, int y, int radius, Color color) {
         this.x = x;
         this.y = y;

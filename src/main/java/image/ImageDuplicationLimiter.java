@@ -1,5 +1,8 @@
 package image;
 
+/**
+ * Abstract class to reduce code duplication between VectorImage and RasterImage classes
+ */
 public abstract class ImageDuplicationLimiter implements Image {
     int width;
     int height;
@@ -9,6 +12,10 @@ public abstract class ImageDuplicationLimiter implements Image {
         return width;
     }
 
+    /**
+     * Setter for image width
+     * @param width : new width of the image
+     */
     protected void setWidth(int width) {
         this.width = width;
     }
@@ -18,6 +25,10 @@ public abstract class ImageDuplicationLimiter implements Image {
         return height;
     }
 
+    /**
+     * Setter for image height
+     * @param height : new height of the image
+     */
     protected void setHeight(int height) {
         this.height = height;
     }

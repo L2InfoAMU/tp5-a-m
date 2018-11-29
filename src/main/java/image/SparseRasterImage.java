@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Generates and image by storing only the non white pixels
+ */
 public class SparseRasterImage extends RasterImage {
 
     private Color[][] colors;
@@ -14,6 +17,13 @@ public class SparseRasterImage extends RasterImage {
     private List<Point> nonWhitePixels = new ArrayList<>();
     private HashMap<Point, Color> hashMap = new HashMap<>();
 
+    /**
+     * Constructor for SparseRasterImage
+     * Creates a single color image with the specified dimensions
+     * @param color : color of the image
+     * @param width : width of the image
+     * @param height : height of the image
+     */
     public SparseRasterImage(Color color, int width, int height) {
         this.width = width;
         this.height = height;
@@ -26,6 +36,11 @@ public class SparseRasterImage extends RasterImage {
         createRepresentation();
     }
 
+    /**
+     * Constructor for SparseRasterImage
+     * Creates an image with the colors specified in the array passed
+     * @param pixels : 2 dimension array of colors for each individual pixel
+     */
     public SparseRasterImage(Color[][] pixels) {
         checkArrayValidity(pixels);
         width = pixels.length;
@@ -45,6 +60,9 @@ public class SparseRasterImage extends RasterImage {
         return hashMap.getOrDefault(new Point(x, y), Color.WHITE);
     }
 
+    /**
+     * Creates 2 dimensional array of pixels to display
+     */
     public void createRepresentation() {
         hashMap = new HashMap<>();
         for (int i = 0; i < width; i++) {
@@ -58,6 +76,12 @@ public class SparseRasterImage extends RasterImage {
         }
     }
 
+    /**
+     * Sets the color of a single pixel
+     * @param color : new color of the pixel
+     * @param x : x coordinate of the pixel
+     * @param y : y coordinate of the pixel
+     */
     public void setPixelColor(Color color, int x, int y) {
         if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
@@ -65,10 +89,18 @@ public class SparseRasterImage extends RasterImage {
         colors[x][y] = color;
     }
 
+    /**
+     * Refreshes all the pixels
+     * @param pixels : 2 dimension array of color for each individual pixel
+     */
     private void setPixelsColor(Color[][] pixels) {
         new SparseRasterImage(pixels);
     }
 
+    /**
+     * Refreshes image as a single color image
+     * @param color : color of the new image
+     */
     private void setPixelsColor(Color color) {
         new SparseRasterImage(color, width, height);
     }
