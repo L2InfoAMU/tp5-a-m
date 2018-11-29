@@ -39,7 +39,7 @@ public class SparseRasterImage extends RasterImage {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        if (!checkCoordinatesInArray(x,y)) {
+        if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
         }
         return hashMap.getOrDefault(new Point(x, y), Color.WHITE);
@@ -59,7 +59,7 @@ public class SparseRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Color color, int x, int y) {
-        if (!checkCoordinatesInArray(x,y)) {
+        if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
         }
         colors[x][y] = color;

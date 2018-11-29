@@ -27,7 +27,7 @@ public class BruteRasterImage extends RasterImage {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        if (!checkCoordinatesInArray(x,y)) {
+        if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
         }
         return colors[x][y];
@@ -44,7 +44,7 @@ public class BruteRasterImage extends RasterImage {
 
     public void setPixelColor(Color color, int x, int y) {
         checkArrayValidity(colors);
-        if (!checkCoordinatesInArray(x,y)) {
+        if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
         }
         colors[x][y] = color;

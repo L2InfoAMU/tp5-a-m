@@ -12,7 +12,7 @@ public abstract class RasterImage extends ImageDuplicationLimiter {
         Matrices.requiresRectangularMatrix(o);
     }
 
-    public boolean checkCoordinatesInArray(int x, int y) {
+    public boolean areCoordinatesInArray(int x, int y) {
         return (x >= 0 && x < width) && (y >= 0 && y < height);
     }
 }

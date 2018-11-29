@@ -39,7 +39,7 @@ public class PaletteRasterImage extends RasterImage {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        if (!checkCoordinatesInArray(x,y)) {
+        if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
         }
         return palette.get(indexOfColors[x][y]);
@@ -86,7 +86,7 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Color color, int x, int y) {
-        if (!checkCoordinatesInArray(x,y)) {
+        if (!areCoordinatesInArray(x,y)) {
             throw new NoSuchElementException();
         }
         addColorToPalette(color);
